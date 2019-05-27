@@ -62,4 +62,5 @@ public class SMPPConstants {
     public static final String NAMESPACE = "ns";
     public static final String SMPPCON = "http://org.wso2.esbconnectors.smppConnector";
     public static final String MESSAGE_ID = "messageId";
+    public static final String IS_LARGE_MESSAGE = "isLargeMessage";
 }

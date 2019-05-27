@@ -30,6 +30,7 @@
     <parameter name="smscDeliveryReceipt" description="Indicator to signify if an SMSC delivery receipt or acknowledgment is required"/>
     <parameter name="messageClass" description=""/>
     <parameter name="isCompressed" description=""/>
+    <parameter name="isLargeMessage" description="Indicate if message charactor count is more than 254"/>
     <parameter name="esmclass" description=""/>
     <parameter name="protocolid" description=""/>
     <parameter name="priorityflag" description=""/>
@@ -45,6 +46,7 @@
         <property name="distinationAddressNpi" expression="$func:distinationAddressNpi"/>
         <property name="distinationAddress" expression="$func:distinationAddress"/>
         <property name="alphabet" expression="$func:alphabet"/>
+        <property name="largeMessage" expression="$func:isLargeMessage"/>
         <property name="message" expression="$func:message"/>
         <property name="smscDeliveryReceipt" expression="$func:smscDeliveryReceipt"/>
         <property name="messageClass" expression="$func:messageClass"/>

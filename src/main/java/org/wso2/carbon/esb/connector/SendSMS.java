@@ -97,6 +97,8 @@ public class SendSMS extends AbstractConnector implements Connector {
         //indicates short message to send from a predefined list of messages stored on SMSC
         dto.setSubmitDefaultMsgId((String) getParameter(messageContext,
                 SMPPConstants.SUBMIT_DEFAULT_MESSAGE_ID));
+        //indicates if the message content is larger then 254 characters
+        dto.setLargeMessage((String) getParameter(messageContext, SMPPConstants.IS_LARGE_MESSAGE));
         //Content of the SMS
         String message = (String) getParameter(messageContext, SMPPConstants.SMS_MESSAGE);
         //Get the user session from the message context
@@ -129,7 +131,8 @@ public class SendSMS extends AbstractConnector implements Connector {
                     new RegisteredDelivery(SMSCDeliveryReceipt.valueOf(dto.getSmscDeliveryReceipt())),
                     (byte) dto.getReplaceIfPresentFlag(),
                     dataCoding, (byte) dto.getSubmitDefaultMsgId(),
-                    message.getBytes());
+                    (dto.isLargeMessage() ? new byte[0] : message.getBytes()), new OptionalParameter
+                            .COctetString(OptionalParameter.Tag.MESSAGE_PAYLOAD.code(),message));
 
             generateResult(messageContext, messageId);
 

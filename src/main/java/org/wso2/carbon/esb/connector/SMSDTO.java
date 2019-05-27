@@ -28,12 +28,25 @@ public class SMSDTO {
     private int esmclass;
     private int protocolid;
     private int priorityflag;
+    private boolean isLargeMessage;
     private String smscDeliveryReceipt;
     private int replaceIfPresentFlag;
     private String alphabet;
     private String messageClass;
     private boolean isCompressed;
     private int submitDefaultMsgId;
+
+    public boolean isLargeMessage() {
+        return isLargeMessage;
+    }
+
+    public void setLargeMessage(String isLargeMessage) {
+        if(StringUtils.isEmpty(isLargeMessage)){
+            this.isLargeMessage = false;
+        }else {
+            this.isLargeMessage = Boolean.parseBoolean(isLargeMessage);
+        }
+    }
 
     public String getDistinationAddressTon() {
         return distinationAddressTon;
